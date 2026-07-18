@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>
+Happy Birthday {{name}}
+</title>
+
+<link rel="stylesheet" href="/style.css">
+
+</head>
+
+
+<body>
+
+
+<audio id="music" loop>
+
+<source src="/song.mp3">
+
+</audio>
+
+
+<div class="card">
+
+
+<img src="/photo.jpg">
+
+
+<h1>
+🎂 Happy Birthday {{name}} 🎂 
+</h1>
+
+
+<p id="text"></p>
+
+
+<button onclick="openGift(this)">
+Open Your Surprise 💝
+</button>
+
+
+</div>
+
+
+
+<script>
+
+
+let messages=[
+{{#each message}}
+"{{this}}",
+{{/each}}
+];
+
+
+let index=0;
+
+
+function openGift(button){
+ button.style.display = "none";
+
+document
+.getElementById("music")
+.play();
+
+
+
+let area=document.getElementById("text");
+
+
+function type(){
+
+if(index < messages.length){
+
+area.innerHTML += messages[index]+"<br><br>";
+
+index++;
+
+setTimeout(type,800);
+
+}
+
+}
+
+
+type();
+
+
+
+for(let i=0;i<50;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML=" ";
+
+heart.className="heart";
+
+
+heart.style.left=Math.random()*10+"%";
+
+
+document.body.appendChild(heart);
+
+
+}
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
